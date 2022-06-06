@@ -1,8 +1,11 @@
+import { User } from 'src/users/user.entity';
 import {
   BaseEntity,
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -18,14 +21,22 @@ export class Asset extends BaseEntity {
   @Column()
   description: string;
 
-  @Column()
+  @Column({ nullable: true })
   imageName: string;
 
-  @Column()
+  @Column({ nullable: true })
   imagePath: string;
 
-  @Column()
+  @Column({ nullable: true })
   imageMimeType: string;
+
+  @ManyToOne(() => User, {
+    eager: true,
+    cascade: true,
+    nullable: true,
+  })
+  @JoinColumn()
+  user: User;
 
   @Column()
   @CreateDateColumn()
