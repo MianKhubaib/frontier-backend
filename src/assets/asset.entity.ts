@@ -21,13 +21,16 @@ export class Asset extends BaseEntity {
   @Column()
   description: string;
 
-  @Column({ nullable: true })
+  @Column()
   imageName: string;
 
-  @Column({ nullable: true })
+  @Column()
   imagePath: string;
 
-  @Column({ nullable: true })
+  @Column()
+  imagePublicId: string;
+
+  @Column()
   imageMimeType: string;
 
   @ManyToOne(() => User, {
