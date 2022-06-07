@@ -18,6 +18,12 @@ export class Asset extends BaseEntity {
   @Column()
   title: string;
 
+  @Column({ default: 'NFT' })
+  type: string;
+
+  @Column({default: 10})
+  price: number;
+
   @Column()
   description: string;
 
