@@ -16,9 +16,6 @@ import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
-    MulterModule.register({
-      dest: './files',
-    }),
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -26,14 +23,9 @@ import { MulterModule } from '@nestjs/platform-express';
       type: 'postgres',
       url: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false },
-      // database: 'frontier',
-      // host: '127.0.0.1',
-      // username: 'postgres',
-      // password: '1234',
       entities: [User, Asset],
       synchronize: true,
       autoLoadEntities: true,
-      //extra: { ssl: { rejectUnauthorized: false } },
     }),
     UsersModule,
     AuthModule,
