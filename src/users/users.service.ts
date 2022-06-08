@@ -10,6 +10,8 @@ export class UsersService {
       const user = User.create({
         email: createUserDto.email,
         password: createUserDto.password,
+        lastName: createUserDto.lastName,
+        firstName: createUserDto.firstName,
       });
       await user.save();
       delete user.password;

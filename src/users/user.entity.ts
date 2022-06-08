@@ -22,6 +22,12 @@ export class User extends BaseEntity {
   @Column()
   password: string;
 
+  @Column()
+  firstName: string;
+
+  @Column()
+  lastName: string;
+
   @OneToMany(() => Asset, (asset) => asset.user)
   asset: Asset;
 
