@@ -13,6 +13,9 @@ import { AssetsController } from './assets/assets.controller';
 import { AssetsModule } from './assets/assets.module';
 import { Asset } from './assets/asset.entity';
 import { MulterModule } from '@nestjs/platform-express';
+import { MessagesService } from './messages/messages.service';
+import { MessagesModule } from './messages/messages.module';
+import { Message } from './messages/message.entity';
 
 @Module({
   imports: [
@@ -23,13 +26,14 @@ import { MulterModule } from '@nestjs/platform-express';
       type: 'postgres',
       url: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false },
-      entities: [User, Asset],
+      entities: [User, Asset, Message],
       synchronize: true,
       autoLoadEntities: true,
     }),
     UsersModule,
     AuthModule,
     AssetsModule,
+    MessagesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

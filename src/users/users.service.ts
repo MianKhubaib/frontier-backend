@@ -35,6 +35,11 @@ export class UsersService {
     });
   }
 
+  async getAll() {
+    const users = await User.find();
+    return users;
+  }
+
   async findByEmail(email: string) {
     return await User.findOne({
       where: {
