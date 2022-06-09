@@ -27,6 +27,11 @@ export class UsersService {
     return user;
   }
 
+  async deleteById(id: number) {
+    const user = await this.findById(id);
+    return User.remove(user);
+  }
+
   async findById(id: number): Promise<User> {
     return await User.findOne({
       where: {
