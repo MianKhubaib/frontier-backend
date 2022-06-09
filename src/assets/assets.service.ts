@@ -45,9 +45,12 @@ export class AssetsService {
   }
 
   async getAll(authToken) {
+    const user = authToken.userId;
     const data = await this.repo.find({
       where: {
-        user: authToken.userId,
+        user: {
+          id: user,
+        },
       },
     });
     const mappedData = data.map((row) => {
